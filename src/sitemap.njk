@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
     {% for page in collections.all %}
         <url>
             <loc>https://www.maximum-marine.ch{{page.url}}</loc>
-            <lastmod>{% currentDate date %}</lastmod>
+            <lastmod>{% date %}</lastmod>
         </url>
     {% endfor %}
 </urlset>
