@@ -1,4 +1,4 @@
-name: Build and deploy Eleventy site to GitHub Pages
+name: Build Eleventy
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v2
