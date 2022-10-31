@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.maximum-marine.ch/
+
+# Sitemaps
+Sitemap: https://www.maximum-marine.ch/sitemap.xml

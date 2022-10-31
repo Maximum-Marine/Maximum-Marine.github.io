@@ -1,0 +1,82 @@
+$themeColours: (
+  "white":  #FFFFFF,    
+  "blue":   #264668,
+);
+
+/* Colors */
+:root {
+  @each $themeColour, $color in $themeColours {
+    --#{$themeColour}: #{$color};
+  }
+
+  --background-color: var(--blue);
+  --text-color: var(--white);
+}
+
+@function coloraria($bg) {
+  @if (lightness($bg) > 50) {
+    @return var(--black);
+  } @else {
+    @return var(--white);
+  }
+}
+
+@each $themeColour, $color in $themeColours {
+  .color-bg {
+    &.#{$themeColour} {
+      
+      ::selection {
+        background: complement($color); /* WebKit/Blink Browsers */
+        color: coloraria($color);
+      }
+      ::-moz-selection {
+        background: complement($color); /* Gecko Browsers */
+        color: coloraria($color);
+      }
+
+      header, &.postlist-item, &.info, &.info-image, &.post-meta  {
+        background-color: var(--#{$themeColour});
+        color: coloraria($color);
+      } 
+
+      header {
+        h1 {
+          background-color: var(--#{$themeColour});
+          color: coloraria($color);
+        }
+        .card {
+          background-color: complement($color);
+          color: coloraria($color);
+          ::selection {
+            background: $color; /* WebKit/Blink Browsers */
+          }
+        }
+      }
+
+      a h3 {
+        color: coloraria($color);
+
+        &:after {
+          background-color: coloraria($color);
+        }
+      }
+
+      .post-excerpt, .postlist-date {
+        color: coloraria($color);
+      }
+    }
+  }
+}
+
+@each $themeColour, $color in $themeColours {
+  .menu-icon {
+    &.#{$themeColour} span {
+      background-color: coloraria($color);
+    }
+  }
+}
+
+
+.emphasys {
+  color: #0098d6;
+}

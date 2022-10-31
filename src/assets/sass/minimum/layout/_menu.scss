@@ -1,0 +1,154 @@
+body > header > nav {
+  display: inline-block;
+  min-width: 30px;
+  justify-self: left;
+
+  label {
+    top: $spacing-unit;
+    height: 1.8em;
+    width: 2.3em;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    padding: $spacing-unit;
+
+    @media screen and (max-width: $on-large) {
+      padding: calc($spacing-unit / 2);
+    }
+
+    z-index: 2;
+
+    .round {
+      position: absolute;
+      top: 0.8em;
+      left: -0.6em;
+      transform: scale(0);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span {
+      display: block;
+      width: 100%;
+      height: calc($spacing-unit / 3);
+    }
+  }
+
+  .trigger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    ul {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+      margin: 0;
+      text-align: center;
+      padding: 0;
+
+      a {
+        text-align: center;
+        color: white;
+        @include relative-font-size(2);
+        font-weight: bold;
+        display: block;
+        padding: calc($spacing-unit/2) $spacing-unit;
+        text-decoration: none;
+
+        &:hover {
+          color: #1f4954;
+          background-color: white;
+        }
+      }
+    }
+  }
+
+  input.nav-trigger {
+    display: none;
+  }
+
+  input:checked ~ label {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    span {
+      display: none;
+    }
+
+    .round {
+      transform: scale(75);
+      position: fixed;
+    }
+  }
+
+  input:checked ~ .trigger {
+    display: flex;
+    overflow: hidden;
+    z-index: 9;
+
+    ul {
+      opacity: 0;
+      animation: menuappear 2s;
+      animation-direction: alternate;
+      animation-delay: 150ms;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  @keyframes menuappear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .page-link {
+    color: var(--text-color);
+    line-height: $base-line-height;
+    display: block;
+    padding: 5px 10px;
+
+    // Gaps between nav items, but not on the last one
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+    margin-left: 20px;
+  }
+
+  @media screen and (min-width: $on-medium) {
+    border: none;
+    background-color: inherit;
+
+    .page-link {
+      display: inline;
+      padding: 0;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+      margin-left: auto;
+    }
+  }
+}

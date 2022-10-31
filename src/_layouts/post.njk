@@ -1,0 +1,40 @@
+---
+layout: base
+templateClass: tmpl-post
+type: post
+eleventyComputed:
+  meta:
+    site:
+      name: "{{ metadata.title }}" 
+      description: "{{ metadata.description }}" 
+      url: "{{ metadata.url }}"
+      logo:
+        src: https://example.com/images/logo.png
+        width: 1200
+        height: 630
+    language: en-US
+    url: "{{ page.url | url }}"
+    title: "{{ title }}"
+    description: "{{ excerpt }}"
+    image:
+      src: https://example.com/images/page.png
+    author:
+      name: "{{ metadata.author.name }}"
+    published: "{{ date }}"
+    modified: "{% if updateDate %}{{ updateDate }}{% endif %}"
+    section: Example
+---
+
+<article class="color-bg {{ color }}">
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+   
+  </footer>
+</article>

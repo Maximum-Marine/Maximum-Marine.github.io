@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $base-font-size;
+}
+
+/**
+ * Basic styling
+ */
+body {
+  scroll-behavior: smooth;
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  color: var(--text-color);
+  background-color: #102846;
+  // background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, #102846 100%);
+  -webkit-font-feature-settings: 'kern' 1;
+  -moz-font-feature-settings: 'kern' 1;
+  -o-font-feature-settings: 'kern' 1;
+  font-feature-settings: 'kern' 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  align-items: center;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+.calltoaction {
+  padding: 1em 0em;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  line-height: 1;
+  align-items: center;
+  width: fit-content;
+
+  &::after {
+    padding: 0 0.5em;
+    font-family: 'Material Symbols Outlined';
+    content: 'arrow_forward';
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
+    font-size: 1.7em;
+    line-height: 1;
+    transition: all ease-in-out 250ms;
+  }
+
+  &:hover::after {
+    transform: translateX(0.5em);
+  }
+
+  &.bg {
+    background-color: #091627;
+    padding: 1em;
+    border-radius: 3px;
+  }
+}
+
+.tel {
+  text-decoration: none;
+  color: #000;
+
+  &::before {
+    font-family: 'Material Symbols Outlined';
+    content: 'call';
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
+  }
+}
+
+.fax {
+  text-decoration: none;
+  color: #000;
+
+  &::before {
+    font-family: 'Material Symbols Outlined';
+    content: 'fax';
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
+  }
+}
+
+.mail {
+  text-decoration: none;
+  color: #000;
+
+  &::before {
+    font-family: 'Material Symbols Outlined';
+    content: 'mail';
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
+  }
+}
+
+.social > svg {
+  width: 36px;
+  height: 36px;
+}
+
+.sr-text {
+  display: none;
+}
+
+.small {
+  @include relative-font-size(0.5);
+}
+
+h1,
+h2,
+h3 {
+  font-family: $heading-font-family;
+  color: var(--text-color);
+}
+
+.container-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  overflow: hidden;
+  mix-blend-mode: screen;
+  z-index: -1;
+
+  .drop-light {
+    width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+  }
+}
+
+svg[class^='layer-'] {
+  position: absolute;
+  z-index: -1;
+  width: 59%;
+  @include media-query($on-laptop) {
+    width: 100%;
+  }
+}
+
+.layer-1 {
+  top: 0;
+  right: 0;
+  opacity: 1;
+
+  path {
+    right: 0;
+  }
+}
+
+.layer-2 {
+  left: -9%;
+  top: -7%;
+  opacity: 0.5;
+  z-index: -2;
+}
+
+.layer-3 {
+  opacity: 1;
+}
+
+svg.svgtext {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.svgtext {
+  text {
+    fill: #fff;
+    font-size: 42px;
+    
+  }
+}
+
+
+
+.heading-big {
+  font-size: 3em;
+  line-height: 1em;
+  @include media-query($on-laptop) {
+    font-size: 2em;
+  }
+}
+
+.tank {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+
+  .front,
+  .back,
+  .sideLeft,
+  .sideRight {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .front {
+    display: block;
+    width: 45px;
+    height: 45px;
+    background-color: rgb(0, 0, 255);
+    transform: perspective(130em) rotateX(-35deg) rotatey(-50deg);
+  }
+  .back {
+    display: block;
+    width: 45px;
+    height: 45px;
+    left: 45px;
+    background-color: rgb(0, 255, 0);
+    transform: perspective(130em) rotateX(-35deg) rotatey(-50deg);
+  }
+  .sideLeft {
+    display: block;
+    width: 45px;
+    height: 45px;
+    left: 8px;
+    bottom: 10px;
+    background-color: rgb(255, 119, 0);
+    transform: perspective(130em) rotateX(-35deg) rotatey(0deg);
+  }
+  .sideRight {
+    display: block;
+    width: 45px;
+    height: 45px;
+    bottom: -10px;
+    left: 37px;
+    background-color: rgb(247, 0, 255);
+    transform: perspective(130em) rotateX(-35deg) rotatey(0deg);
+  }
+}
+
+.aquarealview {
+  position: relative;
+
+  #volume {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+}
