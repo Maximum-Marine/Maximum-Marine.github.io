@@ -188,10 +188,15 @@ main {
 
     img {
       width: -webkit-fill-available;
+      max-width: 30em;
+      float: left;
     }
 
     &:nth-child(even) {
       flex-direction: row-reverse;
+      img {
+        float: right;
+      }
       @include media-query($on-laptop) {
         flex-direction: column;
       }
