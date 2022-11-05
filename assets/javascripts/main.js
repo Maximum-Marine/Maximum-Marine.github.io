@@ -58,17 +58,21 @@ function calculateResult(e) {
 }
 
 window.onload = () => {
-  startSetTimeoutAnimation();
-  startAnimFrameAnimation();
+  startSetTimeoutAnimation('animatetext1');
+  startAnimFrameAnimation('animatetext1');
+  startSetTimeoutAnimation('animatetext2');
+  startAnimFrameAnimation('animatetext2');
+  startSetTimeoutAnimation('animatetext3');
+  startAnimFrameAnimation('animatetext3');
   startAnimText();
 };
 
-function startSetTimeoutAnimation() {
+function startSetTimeoutAnimation(id) {
   const refreshRate = 1000 / 60;
   const maxXPosition = 1280;
   const startPosition = -500; 
 
-  let rect = document.getElementById('animatetext');
+  let rect = document.getElementById(id);
   let speedX = 1;
   let positionX = -400;
 
@@ -82,10 +86,10 @@ function startSetTimeoutAnimation() {
   }, refreshRate);
 }
 
-function startAnimFrameAnimation() {
+function startAnimFrameAnimation(id) {
   const refreshRate = 1000 / 60;
   const maxXPosition = 400;
-  let rect = document.getElementById('animatetext');
+  let rect = document.getElementById(id);
   let speedX = 1;
   let positionX = 0;
 

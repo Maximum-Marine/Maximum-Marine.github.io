@@ -1166,7 +1166,7 @@ input[type=range]:focus::-moz-range-thumb {
 #layer-right {
   top: 0;
   right: 0;
-  opacity: 0.5;
+  opacity: 0.6;
   z-index: -2;
 }
 #layer-right path {
@@ -1190,6 +1190,11 @@ svg.svgtext {
 
 #text-layer-2 {
   top: 25px;
+  left: -25px;
+}
+
+#text-layer-3 {
+  top: -25px;
   left: -25px;
 }
 
