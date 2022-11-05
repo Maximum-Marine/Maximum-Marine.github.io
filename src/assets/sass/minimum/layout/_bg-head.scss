@@ -33,7 +33,7 @@
 #layer-right {
   top: 0;
   right: 0;
-  opacity: 0.5;
+  opacity: 0.60;
   z-index: -2;
 
   path {
@@ -59,6 +59,11 @@ svg.svgtext {
 
 #text-layer-2 {
   top:25px;
+  left:-25px;
+}
+
+#text-layer-3 {
+  top:-25px;
   left:-25px;
 }
 
