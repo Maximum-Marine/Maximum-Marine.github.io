@@ -60,48 +60,66 @@ function calculateResult(e) {
 window.onload = () => {
   startSetTimeoutAnimation();
   startAnimFrameAnimation();
+  startAnimText();
 };
 
 function startSetTimeoutAnimation() {
   const refreshRate = 1000 / 60;
-  const maxXPosition = 400;
+  const maxXPosition = 1280;
+  const startPosition = -500; 
 
-  const text = document.getElementById('animatetext');
-  
-  // text.getAttribute('startOffset') = 90;
+  let rect = document.getElementById('animatetext');
+  let speedX = 1;
+  let positionX = -400;
 
-
-  console.log(document.getElementById('animatetext').getAttribute('startOffset'));
-
-  // let rect = document.getElementById('animatetext');
-  // let speedX = 1;
-  // let positionX = 0;
-
-  // window.setInterval(() => {
-  //   positionX = positionX + speedX;
-  //   if (positionX > maxXPosition || positionX < 0) {
-  //     speedX = speedX * (-1);
-  //   }
-  //   rect.startOffset = positionX + 'px';
-  // }, refreshRate);
+  window.setInterval(() => {
+    positionX = positionX + speedX;
+    if (positionX > maxXPosition || positionX < startPosition) {
+      speedX = speedX * (-1);
+    }
+    
+    rect.setAttribute("startOffset", positionX);
+  }, refreshRate);
 }
 
 function startAnimFrameAnimation() {
-  // const refreshRate = 1000 / 60;
-  // const maxXPosition = 400;
-  // let rect = document.getElementById('animatetext');
-  // let speedX = 1;
-  // let positionX = 0;
+  const refreshRate = 1000 / 60;
+  const maxXPosition = 400;
+  let rect = document.getElementById('animatetext');
+  let speedX = 1;
+  let positionX = 0;
 
-  // function step() {
-  //   positionX = positionX + speedX;
-  //   if (positionX > maxXPosition || positionX < 0) {
-  //     speedX = speedX * (-1);
-  //   }
-  //   rect.rect.startOffset = positionX + 'px';
-  //   window.requestAnimationFrame(step);
-  // }
+  function step() {
+    positionX = positionX + speedX;
+    if (positionX > maxXPosition || positionX < startPosition) {
+      speedX = speedX * (-1);
+    }
+    console.log(positionX);
+    rect.setAttribute("startOffset", positionX);
+    window.requestAnimationFrame(step);
+  }
 
-  // window.requestAnimationFrame(step);
+  window.requestAnimationFrame(step);
 }
 
+function startAnimText() {
+
+  const refreshRate = 500;
+  const letter = Array("y");
+
+  let i = 0;
+  let text = document.getElementById('animatetext');
+
+  window.setInterval(() => { 
+    text.textContent = letter[i];
+    if (i < (letter.length) - 1) {
+      i++;
+    } else {
+      i = 0;
+    }
+    
+  }, refreshRate);
+
+
+  
+}
