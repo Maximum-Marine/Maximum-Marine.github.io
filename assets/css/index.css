@@ -922,9 +922,14 @@ main .section-page > div {
 }
 main .section-page img {
   width: -webkit-fill-available;
+  max-width: 30em;
+  float: left;
 }
 main .section-page:nth-child(even) {
   flex-direction: row-reverse;
+}
+main .section-page:nth-child(even) img {
+  float: right;
 }
 @media screen and (max-width: 800px) {
   main .section-page:nth-child(even) {
