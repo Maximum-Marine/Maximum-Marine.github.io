@@ -58,17 +58,27 @@ function calculateResult(e) {
 }
 
 window.onload = () => {
-  startSetTimeoutAnimation('animatetext1');
-  startAnimFrameAnimation('animatetext1');
-  startSetTimeoutAnimation('animatetext2');
-  startAnimFrameAnimation('animatetext2');
-  startSetTimeoutAnimation('animatetext3');
-  startAnimFrameAnimation('animatetext3');
+
+  var body = document.body,
+    html = document.documentElement;
+
+  var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+  console.log(height);
+
+  startSetTimeoutAnimation('animatetext1', 60);
+  startAnimFrameAnimation('animatetext1', 60);
+
+  startSetTimeoutAnimation('animatetext2', 60);
+  startAnimFrameAnimation('animatetext2', 60);
+
+  startSetTimeoutAnimation('animatetext3', 120);
+  startAnimFrameAnimation('animatetext3', 120);
   startAnimText();
 };
 
-function startSetTimeoutAnimation(id) {
-  const refreshRate = 1000 / 60;
+function startSetTimeoutAnimation(id, rate) {
+  const refreshRate = 1000 / rate;
   const maxXPosition = 1280;
   const startPosition = -500; 
 
@@ -86,8 +96,8 @@ function startSetTimeoutAnimation(id) {
   }, refreshRate);
 }
 
-function startAnimFrameAnimation(id) {
-  const refreshRate = 1000 / 60;
+function startAnimFrameAnimation(id, rate) {
+  const refreshRate = 1000 / rate;
   const maxXPosition = 400;
   let rect = document.getElementById(id);
   let speedX = 1;
@@ -122,8 +132,5 @@ function startAnimText() {
       i = 0;
     }
     
-  }, refreshRate);
-
-
-  
+  }, refreshRate);  
 }
