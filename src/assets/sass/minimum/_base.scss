@@ -42,8 +42,8 @@ body {
   align-items: center;
   width: fit-content;
 
-  &::after {
-    padding: 0 0.5em;
+   &::after {
+     padding: 0 0.5em;
     font-family: 'Material Symbols Outlined';
     content: 'arrow_forward';
     -webkit-font-feature-settings: 'liga' 1;

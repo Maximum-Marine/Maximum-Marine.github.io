@@ -16,7 +16,7 @@ body > header > nav {
       padding: calc($spacing-unit / 2);
     }
 
-    z-index: 2;
+    z-index: 999;
 
     .round {
       position: absolute;
