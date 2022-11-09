@@ -5,9 +5,9 @@
 
 .animate {
   width: -webkit-fill-available;
-  min-height: 100%;
   position: absolute;
   overflow: hidden;
+  height: 768px;
 }
 
 .container-video {
@@ -17,11 +17,13 @@
   height: 100%;
   mix-blend-mode: screen;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   position: absolute;
   z-index: -3;
+  flex-direction: column;
 
   .drop-light {
+    top:0;
     width: 100%;
     max-height: 100%;
   }

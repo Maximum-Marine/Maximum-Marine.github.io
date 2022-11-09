@@ -56,15 +56,8 @@ function calculateResult(e) {
       Math.trunc((lenghtInput.value * widthInput.value * heightInput.value) / 1000) + ' Litres';
   });
 }
-
-window.onload = () => {
-
-  var body = document.body,
-    html = document.documentElement;
-
-  var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
-
-  console.log(height);
+window.addEventListener('load', function(event){
+  resizeAnimate();
 
   startSetTimeoutAnimation('animatetext1', 60);
   startAnimFrameAnimation('animatetext1', 60);
@@ -75,12 +68,31 @@ window.onload = () => {
   startSetTimeoutAnimation('animatetext3', 120);
   startAnimFrameAnimation('animatetext3', 120);
   startAnimText();
-};
+});
+
+window.addEventListener('resize', function(event){
+  resizeAnimate()
+});
+
+function resizeAnimate() {
+  var body = document.body,
+    html = document.documentElement;
+
+  var height = Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
+  let resizeAnimate = document.getElementById('animate').style;
+  resizeAnimate.height = height + 'px';
+}
 
 function startSetTimeoutAnimation(id, rate) {
   const refreshRate = 1000 / rate;
   const maxXPosition = 1280;
-  const startPosition = -500; 
+  const startPosition = -500;
 
   let rect = document.getElementById(id);
   let speedX = 1;
@@ -89,16 +101,17 @@ function startSetTimeoutAnimation(id, rate) {
   window.setInterval(() => {
     positionX = positionX + speedX;
     if (positionX > maxXPosition || positionX < startPosition) {
-      speedX = speedX * (-1);
+      speedX = speedX * -1;
     }
-    
-    rect.setAttribute("startOffset", positionX);
+
+    rect.setAttribute('startOffset', positionX);
   }, refreshRate);
 }
 
 function startAnimFrameAnimation(id, rate) {
   const refreshRate = 1000 / rate;
   const maxXPosition = 400;
+  const startPosition = -500;
   let rect = document.getElementById(id);
   let speedX = 1;
   let positionX = 0;
@@ -106,10 +119,9 @@ function startAnimFrameAnimation(id, rate) {
   function step() {
     positionX = positionX + speedX;
     if (positionX > maxXPosition || positionX < startPosition) {
-      speedX = speedX * (-1);
+      speedX = speedX * -1;
     }
-    console.log(positionX);
-    rect.setAttribute("startOffset", positionX);
+    rect.setAttribute('startOffset', positionX);
     window.requestAnimationFrame(step);
   }
 
@@ -117,20 +129,18 @@ function startAnimFrameAnimation(id, rate) {
 }
 
 function startAnimText() {
-
   const refreshRate = 500;
-  const letter = Array("y");
+  const letter = Array('y');
 
   let i = 0;
   let text = document.getElementById('animatetext');
 
-  window.setInterval(() => { 
+  window.setInterval(() => {
     text.textContent = letter[i];
-    if (i < (letter.length) - 1) {
+    if (i < letter.length - 1) {
       i++;
     } else {
       i = 0;
     }
-    
-  }, refreshRate);  
+  }, refreshRate);
 }
