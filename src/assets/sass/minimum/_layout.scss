@@ -165,6 +165,7 @@ main {
   flex-grow: 1;
   width: fit-content;
   max-width: 70vw;
+  z-index: 1;
   @include media-query($on-laptop) {
     max-width: 95vw;
   }
