@@ -1,10 +1,33 @@
 @import 'utils/prism-base16-monokai.dark';
 
+.sticky {
+  position: sticky;
+  z-index: 999;
+  top:0;
+  background-color: #071525;
+  transition: all ease-in-out 250ms;
+  animation: fromtop 300ms ease-in-out forwards;
+}
+
+@keyframes fromtop {
+  from {
+    top: -7em;
+  }
+  to {
+    top: 0em;
+  }
+}
+
+.tmpl-page header {
+  background-color: #071525;
+}
+
 header {
   display: flex;
   align-content: center;
   align-items: center;
   min-width: 100%;
+  transition: all ease-in-out 250ms;
 
   @include media-query($on-laptop) {
     flex-direction: row-reverse;
@@ -51,7 +74,7 @@ header {
         padding: 1em;
         padding-top: 5em;
 
-        background: #102846;
+        background: #071525;
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
         /* to stop flickering of text in safari */
@@ -169,6 +192,10 @@ main {
   z-index: 0;
   @include media-query($on-laptop) {
     max-width: 95vw;
+  }
+
+  a {
+    color: white;
   }
 
   .section-page {
