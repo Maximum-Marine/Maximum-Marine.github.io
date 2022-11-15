@@ -408,7 +408,7 @@ body {
   scroll-behavior: smooth;
   font: 400 18px/1.5 "Open Sans", sans-serif;
   color: var(--text-color);
-  background-color: #102846;
+  background: #102846;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
   -o-font-feature-settings: "kern" 1;
@@ -419,6 +419,11 @@ body {
   flex-direction: column;
   overflow-wrap: break-word;
   align-items: center;
+}
+
+.tmpl-page {
+  background: #102846;
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(16, 40, 70) 100%);
 }
 
 .material-symbols-outlined {
