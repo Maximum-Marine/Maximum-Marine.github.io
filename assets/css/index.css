@@ -748,11 +748,33 @@ pre > code.highlight {
   background: linear-gradient(to right, rgba(249, 248, 245, 0.2) 70%, rgba(249, 248, 245, 0)) !important;
 }
 
+.sticky {
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  background-color: #071525;
+  transition: all ease-in-out 250ms;
+  animation: fromtop 300ms ease-in-out forwards;
+}
+
+@keyframes fromtop {
+  from {
+    top: -7em;
+  }
+  to {
+    top: 0em;
+  }
+}
+.tmpl-page header {
+  background-color: #071525;
+}
+
 header {
   display: flex;
   align-content: center;
   align-items: center;
   min-width: 100%;
+  transition: all ease-in-out 250ms;
 }
 @media screen and (max-width: 800px) {
   header {
@@ -807,7 +829,7 @@ header #menu ul {
     margin: -60px 0px 0px -30px;
     padding: 1em;
     padding-top: 5em;
-    background: #102846;
+    background: #071525;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
@@ -900,6 +922,9 @@ main {
   main {
     max-width: 95vw;
   }
+}
+main a {
+  color: white;
 }
 main .section-page {
   display: flex;

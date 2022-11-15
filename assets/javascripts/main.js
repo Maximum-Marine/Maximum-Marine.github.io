@@ -144,3 +144,10 @@ function startAnimText() {
     }
   }, refreshRate);
 }
+
+// window.addEventListener("scroll", function(){
+//   let header = document.querySelector("header");
+//   header.classList.toggle("sticky", window.scrollY > 90);
+  
+//   console.log(window.scrollY);
+// })
