@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Le Fish';
-  src: local('Le Fish'), url('/assets/fonts/le-fish.ttf') format('truetype');
+  font-family: 'Fish';
+  src: local('Fish'), url('/assets/fonts/Fish-Regular.ttf') format('truetype');
 }
 
 .animate {
@@ -60,9 +60,9 @@
 }
 
 svg.svgtext {
-  font-family: 'Le Fish';
+  font-family: 'Fish';
   position: absolute;
-  transform: scale(0.4);
+  // transform: scale(0.4);
 }
 
 #text-layer-2 {
@@ -75,9 +75,18 @@ svg.svgtext {
   left:-25px;
 }
 
+#text-layer-4 {
+  top:-25px;
+  left:-50px;
+}
+
+#text-layer-5 {
+  top:-50px;
+  left:-25px;
+}
+
 .svgtext {
   text {
     fill: rgb(0, 0, 0);
-    font-size: 42px;
   }
 }
