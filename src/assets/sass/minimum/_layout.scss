@@ -238,6 +238,7 @@ footer {
   min-width: 100%;
   background-color: #fcf7f3;
   color: #102846;
+  position: relative;
 
   @include media-query($on-laptop) {
     padding: 0px 1em;
