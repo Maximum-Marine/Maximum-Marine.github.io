@@ -59,17 +59,12 @@ function calculateResult(e) {
 window.addEventListener('load', function (event) {
   resizeAnimate();
 
-  startSetTimeoutAnimation('animatetext1', 60);
-  startAnimFrameAnimation('animatetext1', 60);
-  startAnimText('animatetext1');
-
-  startSetTimeoutAnimation('animatetext2', 60);
-  startAnimFrameAnimation('animatetext2', 60);
-  startAnimText('animatetext2');
-
-  startSetTimeoutAnimation('animatetext3', 120);
-  startAnimFrameAnimation('animatetext3', 120);
-  startAnimText('animatetext3');
+  var div_list = document.querySelectorAll('[id^="animatetext"]'); // returns NodeList
+  var div_array = [...div_list]; // converts NodeList to Array
+  div_array.forEach(div => {
+    startSetTimeoutAnimation(div.id);
+    startAnimFrameAnimation(div.id);
+  });
 });
 
 window.addEventListener('resize', function (event) {
@@ -90,8 +85,7 @@ function resizeAnimate() {
 
   //for zoom detection
   px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
-  
-  console.log(px_ratio)
+
 
   if (px_ratio <= 1.25) {
      px_ratio = 1;
@@ -101,38 +95,46 @@ function resizeAnimate() {
   resizeAnimate.height = height / px_ratio + 'px';
 }
 
-function startSetTimeoutAnimation(id, rate) {
-  const refreshRate = 1000 / rate;
+function startSetTimeoutAnimation(id) {
+  const refreshRate = 1000 / 60;
   const maxXPosition = 1280;
   const startPosition = -500;
 
   let rect = document.getElementById(id);
-  let speedX = 1;
+  
+  let speedX = parseFloat(rect.getAttribute("speed"));
   let positionX = -400;
 
   window.setInterval(() => {
     positionX = positionX + speedX;
     if (positionX > maxXPosition || positionX < startPosition) {
       speedX = speedX * -1;
+      letter = rect.textContent == rect.getAttribute("fowardletter") ? rect.getAttribute("reverseletter") : rect.getAttribute("fowardletter");
+      rect.textContent = letter;
     }
 
     rect.setAttribute('startOffset', positionX);
-  }, refreshRate);
+  }, refreshRate)
 }
 
-function startAnimFrameAnimation(id, rate) {
-  const refreshRate = 1000 / rate;
-  const maxXPosition = 400;
+function startAnimFrameAnimation(id) {
+  const refreshRate = 1000 / 60;
+  const maxXPosition = 1280;
   const startPosition = -500;
   let rect = document.getElementById(id);
-  let speedX = 1;
+  
+  
+  let speedX = parseFloat(rect.getAttribute("speed"));
   let positionX = 0;
 
   function step() {
     positionX = positionX + speedX;
     if (positionX > maxXPosition || positionX < startPosition) {
       speedX = speedX * -1;
+      letter = rect.textContent == rect.getAttribute("fowardletter") ? rect.getAttribute("reverseletter") : rect.getAttribute("fowardletter");
+      rect.textContent = letter;
     }
+    
     rect.setAttribute('startOffset', positionX);
     window.requestAnimationFrame(step);
   }
@@ -140,9 +142,9 @@ function startAnimFrameAnimation(id, rate) {
   window.requestAnimationFrame(step);
 }
 
-function startAnimText(id) {
-  const refreshRate = 500;
-  const letter = Array('y','t');
+function startAnimText(id, rate) {
+  const refreshRate = rate;
+  const letter = Array('A','B');
 
   let i = 0;
   let text = document.getElementById(id);
