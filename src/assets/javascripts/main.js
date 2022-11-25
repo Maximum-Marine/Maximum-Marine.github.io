@@ -56,22 +56,24 @@ function calculateResult(e) {
       Math.trunc((lenghtInput.value * widthInput.value * heightInput.value) / 1000) + ' Litres';
   });
 }
-window.addEventListener('load', function(event){
+window.addEventListener('load', function (event) {
   resizeAnimate();
 
   startSetTimeoutAnimation('animatetext1', 60);
   startAnimFrameAnimation('animatetext1', 60);
+  startAnimText('animatetext1');
 
   startSetTimeoutAnimation('animatetext2', 60);
   startAnimFrameAnimation('animatetext2', 60);
+  startAnimText('animatetext2');
 
   startSetTimeoutAnimation('animatetext3', 120);
   startAnimFrameAnimation('animatetext3', 120);
-  startAnimText();
+  startAnimText('animatetext3');
 });
 
-window.addEventListener('resize', function(event){
-  resizeAnimate()
+window.addEventListener('resize', function (event) {
+  resizeAnimate();
 });
 
 function resizeAnimate() {
@@ -85,8 +87,18 @@ function resizeAnimate() {
     html.scrollHeight,
     html.offsetHeight
   );
+
+  //for zoom detection
+  px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
+  
+  console.log(px_ratio)
+
+  if (px_ratio <= 1.25) {
+     px_ratio = 1;
+  }
+
   let resizeAnimate = document.getElementById('animate').style;
-  resizeAnimate.height = height + 'px';
+  resizeAnimate.height = height / px_ratio + 'px';
 }
 
 function startSetTimeoutAnimation(id, rate) {
@@ -128,14 +140,15 @@ function startAnimFrameAnimation(id, rate) {
   window.requestAnimationFrame(step);
 }
 
-function startAnimText() {
+function startAnimText(id) {
   const refreshRate = 500;
-  const letter = Array('y');
+  const letter = Array('y','t');
 
   let i = 0;
-  let text = document.getElementById('animatetext');
+  let text = document.getElementById(id);
 
   window.setInterval(() => {
+    
     text.textContent = letter[i];
     if (i < letter.length - 1) {
       i++;
@@ -148,6 +161,6 @@ function startAnimText() {
 // window.addEventListener("scroll", function(){
 //   let header = document.querySelector("header");
 //   header.classList.toggle("sticky", window.scrollY > 90);
-  
+
 //   console.log(window.scrollY);
 // })

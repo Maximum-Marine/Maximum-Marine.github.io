@@ -13,7 +13,7 @@ body {
   scroll-behavior: smooth;
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: var(--text-color);
-  background: #102846;
+  background: #152943;
   // background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, #102846 100%);
   -webkit-font-feature-settings: 'kern' 1;
   -moz-font-feature-settings: 'kern' 1;
@@ -28,8 +28,8 @@ body {
 }
 
 .tmpl-page {
-  background: #102846;
-  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(16,40,70,1) 100%);
+  background: #152943;
+  background: linear-gradient(180deg, #1b3960 0%, #152943 100%);
 }
 
 .material-symbols-outlined {

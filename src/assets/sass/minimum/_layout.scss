@@ -18,9 +18,9 @@
   }
 }
 
-.tmpl-page header {
-  background-color: #071525;
-}
+// .tmpl-page header {
+//   background-color: #071525;
+// }
 
 header {
   display: flex;
@@ -435,4 +435,8 @@ input[type="range"]:focus::-moz-range-thumb {
  border: 1px solid #053a5f;
  outline: 3px solid #053a5f;
  outline-offset: 0.125rem; 
+}
+
+video::-webkit-media-controls {
+  display: none;
 }
