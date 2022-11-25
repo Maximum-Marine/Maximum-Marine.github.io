@@ -970,6 +970,7 @@ footer {
   min-width: 100%;
   background-color: #fcf7f3;
   color: #102846;
+  position: relative;
 }
 @media screen and (max-width: 800px) {
   footer {
@@ -1224,27 +1225,20 @@ video::-webkit-media-controls {
 
 svg.svgtext {
   font-family: "Fish";
+  font-size: 20px;
   position: absolute;
+  z-index: -2;
 }
 
-#text-layer-2 {
-  top: 25px;
-  left: -25px;
+svg.svgtextbottom {
+  font-family: "Fish";
+  font-size: 240px;
+  position: absolute;
+  z-index: -9;
 }
 
-#text-layer-3 {
-  top: -25px;
-  left: -25px;
-}
-
-#text-layer-4 {
-  top: -25px;
-  left: -50px;
-}
-
-#text-layer-5 {
-  top: -50px;
-  left: -25px;
+#text-layer-6 {
+  bottom: 0;
 }
 
 .svgtext text {

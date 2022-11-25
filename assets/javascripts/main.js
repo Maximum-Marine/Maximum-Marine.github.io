@@ -62,8 +62,9 @@ window.addEventListener('load', function (event) {
   var div_list = document.querySelectorAll('[id^="animatetext"]'); // returns NodeList
   var div_array = [...div_list]; // converts NodeList to Array
   div_array.forEach(div => {
-    startSetTimeoutAnimation(div.id);
-    startAnimFrameAnimation(div.id);
+
+    setTimeout(startSetTimeoutAnimation, 50 , div.id);
+    setTimeout(startAnimFrameAnimation,5000 ,div.id);
   });
 });
 
@@ -109,8 +110,6 @@ function startSetTimeoutAnimation(id) {
     positionX = positionX + speedX;
     if (positionX > maxXPosition || positionX < startPosition) {
       speedX = speedX * -1;
-      letter = rect.textContent == rect.getAttribute("fowardletter") ? rect.getAttribute("reverseletter") : rect.getAttribute("fowardletter");
-      rect.textContent = letter;
     }
 
     rect.setAttribute('startOffset', positionX);
@@ -131,7 +130,9 @@ function startAnimFrameAnimation(id) {
     positionX = positionX + speedX;
     if (positionX > maxXPosition || positionX < startPosition) {
       speedX = speedX * -1;
-      letter = rect.textContent == rect.getAttribute("fowardletter") ? rect.getAttribute("reverseletter") : rect.getAttribute("fowardletter");
+      letterToggle = ( rect.textContent == rect.getAttribute("reverseletter")) ? rect.getAttribute("fowardletter") : rect.getAttribute("reverseletter");
+      letter = letterToggle;
+      console.log(id + ": need reverse to letter " + letterToggle);
       rect.textContent = letter;
     }
     
@@ -142,23 +143,6 @@ function startAnimFrameAnimation(id) {
   window.requestAnimationFrame(step);
 }
 
-function startAnimText(id, rate) {
-  const refreshRate = rate;
-  const letter = Array('A','B');
-
-  let i = 0;
-  let text = document.getElementById(id);
-
-  window.setInterval(() => {
-    
-    text.textContent = letter[i];
-    if (i < letter.length - 1) {
-      i++;
-    } else {
-      i = 0;
-    }
-  }, refreshRate);
-}
 
 // window.addEventListener("scroll", function(){
 //   let header = document.querySelector("header");
