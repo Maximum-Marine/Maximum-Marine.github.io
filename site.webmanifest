@@ -387,12 +387,12 @@
   ],
   "screenshots": [
     {
-      "src": "./assets/images/screenshot/screenshot1.webp",
+      "src": "./assets/images/screenshot/screenshot-1.png",
       "sizes": "1280x720",
       "type": "image/webp"
     },
     {
-      "src": "./assets/images/screenshot/screenshot2.webp",
+      "src": "./assets/images/screenshot/screenshot-1.png",
       "sizes": "1280x720",
       "type": "image/webp"
     }
