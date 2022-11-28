@@ -66,15 +66,33 @@ svg.svgtext {
   z-index: -2;
 }
 
+$animation-height: 1400px;
+
+.animatebottom {
+  position: relative;
+  width: 100%;
+  height: calc($animation-height / 2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -160px;
+  margin-bottom: -50px;
+}
+
 svg.svgtextbottom {
   font-family: 'Fish';
   font-size: 240px;
   position: absolute;
-  z-index: -9;
+  z-index: 1;
 }
 
 #text-layer-6 {
-  bottom: 0;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  height: $animation-height;
+  width: 240vw;
 }
 
 .svgtext {
