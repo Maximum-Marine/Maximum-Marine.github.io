@@ -87,8 +87,8 @@ function resizeAnimate() {
   //for zoom detection
   px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
 
-
-  if (px_ratio <= 1.25) {
+    console.log(px_ratio)
+  if (px_ratio < 1.25) {
      px_ratio = 1;
   }
 
